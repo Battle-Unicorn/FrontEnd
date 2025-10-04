@@ -1,0 +1,43 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+smart-sleep/node_modules/
+
+# Expo
+smart-sleep/.expo/
+smart-sleep/dist/
+smart-sleep/web-build/
+smart-sleep/expo-env.d.ts
+
+# Native
+smart-sleep/.kotlin/
+smart-sleep/*.orig.*
+smart-sleep/*.jks
+smart-sleep/*.p8
+smart-sleep/*.p12
+smart-sleep/*.key
+smart-sleep/*.mobileprovision
+
+# Metro
+smart-sleep/.metro-health-check*
+
+# debug
+smart-sleep/npm-debug.*
+smart-sleep/yarn-debug.*
+smart-sleep/yarn-error.*
+
+# macOS
+smart-sleep/.DS_Store
+smart-sleep/*.pem
+
+# local env files
+smart-sleep/.env*.local
+
+# typescript
+smart-sleep/*.tsbuildinfo
+
+smart-sleep/app-example
+
+# generated native folders
+smart-sleep//ios
+smart-sleep//android
