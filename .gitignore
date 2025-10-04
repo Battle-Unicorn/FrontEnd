@@ -36,8 +36,6 @@ smart-sleep/.env*.local
 # typescript
 smart-sleep/*.tsbuildinfo
 
-smart-sleep/app-example
-
 # generated native folders
 smart-sleep//ios
 smart-sleep//android
