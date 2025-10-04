@@ -13,7 +13,7 @@ export default function RootLayout() {
         // },
       }}
     >
-      <Stack.Screen name="index" options={{title: "Main Page"}} />
+      <Stack.Screen name="index" options={{title: "Smart Sleep"}} />
       <Stack.Screen name="wiki" options={{title: "Wiki Page"}} />
       <Stack.Screen name="dream-design" options={{title: "Design Your Dream"}} />
       <Stack.Screen name="history" options={{title: "Sleep History"}} />
