@@ -11,6 +11,9 @@ export default function SleepHistory() {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#25292e',
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
 
     }
 })

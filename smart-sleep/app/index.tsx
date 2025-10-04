@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-  backgroundColor: '#007AFF',
-  padding: 15,
-  borderRadius: 8,
-  alignItems: 'center',
-},
-buttonText: {
-  color: '#fff',
-  fontSize: 16,
-  fontWeight: '600',
-},
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 })
