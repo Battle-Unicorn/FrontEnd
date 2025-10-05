@@ -1,4 +1,4 @@
-# 💤 Smart Sleep - Android App
+# 💤 Smart Sleep - Web, iOS, Android App
 
 **Smart Sleep** is a modern Android app designed to help users controll their luci dream by connecting with a smart backend that monitors and analyzes sleep patterns in real time.
 
@@ -29,5 +29,5 @@ This project is built using **React Native** with **Expo**.
 To deploy this project run
 
 ```bash
-  $ npm expo run
+  $ npx expo run
 ```
