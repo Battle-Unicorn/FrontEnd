@@ -2,7 +2,10 @@
 
 **Smart Sleep** is a modern Android app designed to help users controll their luci dream by connecting with a smart backend that monitors and analyzes sleep patterns in real time.
 
-Have a look at the app in this video: https://streamable.com/7wwtci
+Have a look at the app in a short video, you can access it in 3 places: 
+- ![nagranie.mp4](nagranie.mp4)
+- https://streamable.com/7wwtci
+- https://vimeo.com/1124569036?share=copy 
 
 ---
 
