@@ -4,6 +4,7 @@ import MyTitle from './components/my-title';
 import MyContainer from './components/my-container';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react'
+import { router } from 'expo-router';
 
 export default function RemConfig() {
     const { phase } = useLocalSearchParams();
@@ -41,16 +42,17 @@ export default function RemConfig() {
     );
 };
 
-const saveData = async (phase, place, keyword) => {
+const saveData = async (phase: any, place: any, keyword: any) => {
     let key = `rem${phase}`;
     try {
         const jsonValue = JSON.stringify({"place": place,"key_word": keyword });
         await AsyncStorage.setItem(key, jsonValue);
+        router.push("/dream-design");
     } catch (e) {
         console.error('Error saving data', e);
     }
 };
-const getData = async (phase) => {
+const getData = async (phase: any) => {
     let key = `rem${phase}`;
   try {
     const jsonValue = await AsyncStorage.getItem(key);

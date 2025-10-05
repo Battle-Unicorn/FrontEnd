@@ -6,10 +6,57 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MySubtitle from './components/my-subtitle';
 import MyButton from './components/my-button';
+import { useState } from 'react';
 
 export default function DreamDesign() {
+    const [isLoading, setIsLoading] = useState(false);
     const remPhases = ['REM 1', 'REM 2', 'REM 3', 'REM 4', 'REM 5', 'REM 6', 'REM 7'];
     
+    // image background source to background19 and text style to remTextChecked
+    const sendScenerio = async () => {
+    setIsLoading(true);
+    try {
+        const backend_url = "http://192.168.8.102:8080/mobile/load_scenarios";
+        let data = {
+            "mobile_id":"DEV_001",
+            "timestamp": new Date().toISOString(),
+            "dream_keywords": [],
+        };
+
+        for (let i = 1; i <= 7; i++) {//TODO in far future make it not harcoded
+            const key = `rem${i}`;
+            const jsonValue = await AsyncStorage.getItem(key);
+            if (jsonValue == null) {
+                continue;
+            }
+            let item_json = JSON.parse(jsonValue);
+            console.log(key, item_json);
+            data["dream_keywords"].push(item_json);
+        }
+        console.log(data);
+        
+
+        const response = await fetch(backend_url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(data)
+        });
+
+        const json = await response.json();
+        console.log("RESPONSE FORM SERVER:", json);
+
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    await AsyncStorage.clear()
+    router.push("/sleeping");
+    };
+
     return (
         <ScrollView style={styles.scroll}>
             <MyContainer content={
@@ -40,7 +87,7 @@ export default function DreamDesign() {
 
                     <Pressable onPress={sendScenerio} style={styles.button}>
                         <Text style={styles.buttonText}>
-                            START DREAMING →
+                            {isLoading ? 'Loading...' : 'Start Dreaming'}
                         </Text>
                     </Pressable>
                 </>
@@ -50,46 +97,7 @@ export default function DreamDesign() {
     )
 }
 
-// image background source to background19 and text style to remTextChecked
-const sendScenerio = async () => {
-  try {
-    const backend_url = "http://192.168.8.102:8080/mobile/load_scenarios";
-    let data = {
-        "mobile_id":"DEV_001",
-        "timestamp": new Date().toISOString(),
-        "dream_keywords": [],
-    };
 
-    for (let i = 1; i <= 7; i++) {//TODO in far future make it not harcoded
-        const key = `rem${i}`;
-        const jsonValue = await AsyncStorage.getItem(key);
-        if (jsonValue == null) {
-            continue;
-        }
-        let item_json = JSON.parse(jsonValue);
-        console.log(key, item_json);
-        data["dream_keywords"].push(item_json);
-        i++;
-    }
-    console.log(data);
-
-
-    const response = await fetch(backend_url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify(data)
-    });
-
-    const json = await response.json();
-    console.log("RESPONSE FORM SERVER:", json);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
 
 const styles = StyleSheet.create({
     scroll: {
