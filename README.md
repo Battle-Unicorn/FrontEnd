@@ -1,8 +1,8 @@
 # 💤 Smart Sleep - Web, iOS, Android App
 
-**Smart Sleep** is a modern Android app designed to help users controll their luci dream by connecting with a smart backend that monitors and analyzes sleep patterns in real time.
+**Smart Sleep** is a modern app designed to help users control their lucid dreams by connecting with a smart device that monitors and analyses sleep patterns real-time.
 
-Have a look at the app in a short video, you can access it in 3 places: 
+Have a look at the app in a short video. You can access it in 3 places: 
 - [nagranie.mp4](nagranie.mp4)
 - https://streamable.com/7wwtci
 - https://vimeo.com/1124569036?share=copy 
@@ -11,11 +11,8 @@ Have a look at the app in a short video, you can access it in 3 places:
 
 ## ✨ Features
 
-- 📊 **Sleep Tracking**  
-  Seamless connection to a backend system that collects your sleep data.
-
-- 📱 **User-Friendly Interface**  
-  Simple, intuitive design for effortless navigation and insights.
+-  **Dream Design**  
+-  **Sleep History**  
 ---
 
 ## 🚀 Getting Started (For Developers)
