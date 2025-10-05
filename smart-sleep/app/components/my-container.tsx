@@ -6,7 +6,6 @@ export default function MyContainer({content}:any) {
                 <ImageBackground 
                     source={require('../../assets/images/background18.jpg')} 
                     style={styles.background}
-                    imageStyle={styles.imageStyle}
                 >
                     {content}
                 </ImageBackground>
@@ -20,6 +19,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        borderRadius: 0,
         
     },
     background: {
@@ -30,7 +30,5 @@ const styles = StyleSheet.create({
         padding: 20,
         paddingBottom:70,
     },
-    imageStyle: {
-        borderRadius: 12,
-    },
+
 })
