@@ -4,16 +4,18 @@ import MyTitle from './components/my-title';
 import MyContainer from './components/my-container';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import MySubtitle from './components/my-subtitle';
+import MyButton from './components/my-button';
+
 export default function DreamDesign() {
     const remPhases = ['REM 1', 'REM 2', 'REM 3', 'REM 4', 'REM 5', 'REM 6', 'REM 7'];
     
     return (
         <ScrollView style={styles.scroll}>
-
             <MyContainer content={
                 <>
                     <MyTitle text={'Design your dreams today'}/>
-                    <Text style={styles.subtitle}>Sleep Length: 7h</Text>
+                    <MySubtitle text={'Sleep Length: 7h'}/>
                     
                     <View style={styles.remContainer}>
                         {remPhases.map((phase, index) => (
@@ -26,7 +28,6 @@ export default function DreamDesign() {
                             </TouchableOpacity>
                         ))}
                     </View>
-
                     <Pressable onPress={sendScenerio} style={styles.button}>
                         <Text style={styles.buttonText}>
                             START DREAMING →
@@ -83,11 +84,6 @@ const styles = StyleSheet.create({
     scroll: {
         flex: 1,
     },
-    subtitle: {
-        color: '#fff3fd',
-        fontSize: 20,
-        marginBottom: 40,
-    },
     remContainer: {
         width: '100%',
         alignItems: 'center',
@@ -105,20 +101,22 @@ const styles = StyleSheet.create({
         borderColor: '#3a3a3a',
     },
     remText: {
-        color: '#fff',
+        color: '#fff3fd',
         fontSize: 18,
         fontWeight: '500',
+        fontFamily: 'Verdana',
     },
     button: {
         backgroundColor: '#fff3fd',
         padding: 15,
         borderRadius: 8,
         alignItems: 'center',
+        
     },
     buttonText: {
+        fontFamily: 'Verdana',
         color: '#322f3b',
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 18,
+        fontWeight: '500',
     }
-
 })
