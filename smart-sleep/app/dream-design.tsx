@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MySubtitle from './components/my-subtitle';
 import MyButton from './components/my-button';
-import { useState } from 'react';
 
 export default function DreamDesign() {
     const [isLoading, setIsLoading] = useState(false);
