@@ -19,6 +19,8 @@ export default function RootLayout() {
       <Stack.Screen name="history" options={{title: "Sleep History"}} />
       <Stack.Screen name="config" options={{title: "Connect To Smart Device"}} />
       <Stack.Screen name="rem-config" options={{title: "Configure REM"}} />
+      <Stack.Screen name="sleeping" options={{title: "Making Your Dreams Come True"}} />
+      <Stack.Screen name="survey" options={{title: "Answer Questions About Your Sleep"}} />
     </Stack>
   );
 }

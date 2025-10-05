@@ -6,61 +6,59 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react'
 import { router } from 'expo-router';
 
-export default function RemConfig() {
-    const { phase } = useLocalSearchParams();
-    const [place_input, setPlace] = React.useState('');
-    const [keyword_input, setKeyword] = React.useState('');
+// rate sleep quality
+// did u have dreams
+// did u have lucid dreams 
+
+export default function Survey() {
+    const [quality, setQuality] = React.useState('');
+    const [dreams, setDreams] = React.useState('');
+    const [lucid_dreams, setLucidDreams] = React.useState('');
 
     return (
         <MyContainer content={<>
-            <MyTitle text={`Configure REM ${phase}`}/>
             <TextInput
               style={styles.input}
-              value={place_input}
-              onChangeText={setPlace}
-              placeholder="Place in a dream"
+              value={quality}
+              onChangeText={setQuality}
+              placeholder="Rate your sleep quality"
             />
             <TextInput
               style={styles.input}
-              value={keyword_input}
-              onChangeText={setKeyword}
-              placeholder="Keywords"
+              value={dreams}
+              onChangeText={setDreams}
+              placeholder="Did you have dreams?"
+            />
+            
+            <TextInput
+              style={styles.input}
+              value={lucid_dreams}
+              onChangeText={setLucidDreams}
+              placeholder="Did you have lucid dreams?"
             />
 
             <Pressable 
                 onPress={() => {
-                    saveData(phase, place_input, keyword_input);
+                    saveData(quality, dreams, lucid_dreams);
                 }}
                 style={styles.button}>
-                    <Text style={styles.buttonText}>Save settings</Text>
+                    <Text style={styles.buttonText}>Save</Text>
             </Pressable>
-            {/*<Pressable onPress={() => {getData(phase)}} style={styles.button}>
-                <Text style={styles.buttonText}>get settings</Text>
-            </Pressable>*/}
         </>
         }/>
     );
 };
 
-const saveData = async (phase: any, place: any, keyword: any) => {
-    let key = `rem${phase}`;
+const saveData = async (quality: any, dreams: any, lucid_dreams: any) => {
+    let key = `survey`;
     try {
-        const jsonValue = JSON.stringify({"place": place,"key_word": keyword });
+        const jsonValue = JSON.stringify({"quality": quality,"dreams": dreams,"lucid_dreams": lucid_dreams });
         await AsyncStorage.setItem(key, jsonValue);
-        router.push("/dream-design");
+        router.push("/");
     } catch (e) {
         console.error('Error saving data', e);
     }
-};
-const getData = async (phase: any) => {
-    let key = `rem${phase}`;
-  try {
-    const jsonValue = await AsyncStorage.getItem(key);
-    console.log( jsonValue != null ? JSON.parse(jsonValue) : null);
-  } catch (e) {
-    console.error('Error reading value', e);
-    return null;
-  }
+    // () => router.push("/index")
 };
 
 const styles = StyleSheet.create({
