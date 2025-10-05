@@ -29,5 +29,6 @@ This project is built using **React Native** with **Expo**.
 To deploy this project run
 
 ```bash
+  $ npm install expo
   $ npx expo run
 ```
