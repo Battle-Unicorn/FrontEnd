@@ -9,12 +9,6 @@ Have a look at the app in a short video. You can access it in 3 places:
 
 ---
 
-## ✨ Features
-
--  **Dream Design**  
--  **Sleep History**  
----
-
 ## 🚀 Getting Started (For Developers)
 
 This project is built using **React Native** with **Expo**.
