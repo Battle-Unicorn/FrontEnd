@@ -1,4 +1,5 @@
 import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Pressable, ImageBackground } from 'react-native'
+import { useState, useEffect } from 'react'
 import { router } from 'expo-router';
 import MyTitle from './components/my-title';
 import MyContainer from './components/my-container';
@@ -9,7 +10,25 @@ import MyButton from './components/my-button';
 
 export default function DreamDesign() {
     const remPhases = ['REM 1', 'REM 2', 'REM 3', 'REM 4', 'REM 5', 'REM 6', 'REM 7'];
-    
+    const bg1 = require('../assets/images/background6.jpg');
+    const bg2 = require('../assets/images/background19.jpg');
+    let aaaaa = []
+    const [remStates, setRemStates] = useState([]);
+
+    useEffect(() => {
+        const loadRemStates = async () => {
+            const states = [];
+            for (let i = 1; i <= 7; i++) {
+                const key = `rem${i}`;
+                const jsonValue = await AsyncStorage.getItem(key);
+                states.push(jsonValue !== null);
+            }
+            setRemStates(states);
+        };
+
+        loadRemStates();
+    }, []);
+
     return (
         <ScrollView style={styles.scroll}>
             <MyContainer content={
@@ -27,11 +46,11 @@ export default function DreamDesign() {
                                 {/* <Text style={styles.remText}>{phase}</Text> */}
 
                                 <ImageBackground 
-                                    source={require('../assets/images/background6.jpg')} 
+                                    source={remStates[index] ? bg2 : bg1}
                                     style={styles.remBackground}
                                     imageStyle={styles.remImageStyle}
                                 >
-                                    <Text style={styles.remText}>{phase}</Text>
+                                    <Text style={remStates[index] ? styles.remTextChecked : styles.remText}>{phase}</Text>
                                 </ImageBackground>
 
                             </TouchableOpacity>
@@ -69,7 +88,6 @@ const sendScenerio = async () => {
         let item_json = JSON.parse(jsonValue);
         console.log(key, item_json);
         data["dream_keywords"].push(item_json);
-        i++;
     }
     console.log(data);
 
