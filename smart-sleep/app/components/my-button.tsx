@@ -2,11 +2,13 @@ import { Text, Pressable, StyleSheet} from 'react-native'
 
 export default function MyButton({content}:any) {    
     return (
+        <>
             <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>
                     {content}
                 </Text>
             </Pressable>
+        </>
     )
 }
 

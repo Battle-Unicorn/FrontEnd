@@ -26,7 +26,11 @@ export default function DreamDesign() {
                             </TouchableOpacity>
                         ))}
                     </View>
-                    <MyButton text={'START DREAMING →'}/>
+                    <Pressable style={styles.button}>
+                                    <Text style={styles.buttonText}>
+                                        START DREAMING
+                                    </Text>
+                                </Pressable>
                 </>
             }/>
         </ScrollView>
@@ -55,8 +59,22 @@ const styles = StyleSheet.create({
         borderColor: '#3a3a3a',
     },
     remText: {
-        color: '#fff',
+        color: '#fff3fd',
         fontSize: 18,
         fontWeight: '500',
+        fontFamily: 'Verdana',
     },
+    button: {
+        backgroundColor: '#fff3fd',
+        padding: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        
+    },
+    buttonText: {
+        fontFamily: 'Verdana',
+        color: '#322f3b',
+        fontSize: 18,
+        fontWeight: '500',
+    }
 })

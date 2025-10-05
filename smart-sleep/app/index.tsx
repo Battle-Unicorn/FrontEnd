@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: 'Verdana',
-    color: '#fff',
+    color: '#fff3fd',
     fontSize: 18,
     fontWeight: '500',
   },
