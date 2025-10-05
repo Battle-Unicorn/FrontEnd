@@ -2,6 +2,8 @@ import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Pressable } from 
 import { router } from 'expo-router';
 import MyTitle from './components/my-title';
 import MyContainer from './components/my-container';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import MySubtitle from './components/my-subtitle';
 import MyButton from './components/my-button';
 
@@ -26,17 +28,57 @@ export default function DreamDesign() {
                             </TouchableOpacity>
                         ))}
                     </View>
-                    <Pressable style={styles.button}>
-                                    <Text style={styles.buttonText}>
-                                        START DREAMING
-                                    </Text>
-                                </Pressable>
+                    <Pressable onPress={sendScenerio} style={styles.button}>
+                        <Text style={styles.buttonText}>
+                            START DREAMING →
+                        </Text>
+                    </Pressable>
                 </>
             }/>
         </ScrollView>
         
     )
 }
+
+const sendScenerio = async () => {
+  try {
+    const backend_url = "http://192.168.8.102:8080/mobile/load_scenarios";
+    let data = {
+        "mobile_id":"DEV_001",
+        "timestamp": new Date().toISOString(),
+        "dream_keywords": [],
+    };
+
+    for (let i = 1; i <= 7; i++) {//TODO in far future make it not harcoded
+        const key = `rem${i}`;
+        const jsonValue = await AsyncStorage.getItem(key);
+        if (jsonValue == null) {
+            continue;
+        }
+        let item_json = JSON.parse(jsonValue);
+        console.log(key, item_json);
+        data["dream_keywords"].push(item_json);
+        i++;
+    }
+    console.log(data);
+
+
+    const response = await fetch(backend_url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(data)
+    });
+
+    const json = await response.json();
+    console.log("RESPONSE FORM SERVER:", json);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
 const styles = StyleSheet.create({
     scroll: {

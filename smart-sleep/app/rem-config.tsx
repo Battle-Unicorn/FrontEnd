@@ -3,40 +3,48 @@ import { useLocalSearchParams } from 'expo-router';
 import MyTitle from './components/my-title';
 import MyContainer from './components/my-container';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react'
 
 export default function RemConfig() {
     const { phase } = useLocalSearchParams();
-    // const [text, onChangeText] = React.useState('Useless Text');
+    const [place_input, setPlace] = React.useState('');
+    const [keyword_input, setKeyword] = React.useState('');
 
     return (
         <MyContainer content={<>
             <MyTitle text={`Configure REM ${phase}`}/>
             <TextInput
               style={styles.input}
+              value={place_input}
+              onChangeText={setPlace}
               placeholder="Place in a dream"
             />
             <TextInput
               style={styles.input}
+              value={keyword_input}
+              onChangeText={setKeyword}
               placeholder="Keywords"
             />
 
-            <Pressable onPress={() => {saveData(phase)}} style={styles.button}>
-                <Text style={styles.buttonText}>Save settings</Text>
+            <Pressable 
+                onPress={() => {
+                    saveData(phase, place_input, keyword_input);
+                }}
+                style={styles.button}>
+                    <Text style={styles.buttonText}>Save settings</Text>
             </Pressable>
-            <Pressable onPress={() => {getData(phase)}} style={styles.button}>
+            {/*<Pressable onPress={() => {getData(phase)}} style={styles.button}>
                 <Text style={styles.buttonText}>get settings</Text>
-            </Pressable>
+            </Pressable>*/}
         </>
         }/>
     );
 };
 
-const saveData = async (phase) => {
+const saveData = async (phase, place, keyword) => {
     let key = `rem${phase}`;
-    let data = 'jakeis dane'
     try {
-        const jsonValue = JSON.stringify(data);
-        console.log("AAA", jsonValue);
+        const jsonValue = JSON.stringify({"place": place,"key_word": keyword });
         await AsyncStorage.setItem(key, jsonValue);
     } catch (e) {
         console.error('Error saving data', e);

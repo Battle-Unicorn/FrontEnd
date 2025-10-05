@@ -19,7 +19,7 @@ export default function Wiki() {
 }
 const sendPostRequest = async () => {
   try {
-    let backend_url = "http://192.168.8.103:12345/add"
+    let backend_url = "http://192.168.8.102:8080/add"
     const response = await fetch(backend_url, {
       method: 'POST',
       headers: {
