@@ -30,5 +30,5 @@ To deploy this project run
 
 ```bash
   $ npm install expo
-  $ npx expo run
+  $ npx expo start
 ```
