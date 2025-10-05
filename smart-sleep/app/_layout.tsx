@@ -8,12 +8,12 @@ export default function RootLayout() {
           backgroundColor: '#1b191f',
         },
         headerTintColor: '#fff3fd',
-        // headerTitleStyle: {
-        //   fontWeight: '600',
-        // },
+        headerTitleStyle: {
+          fontFamily: 'Verdana',
+        },
       }}
     >
-      <Stack.Screen name="index" options={{title: "Smart Sleep"}} />
+      <Stack.Screen name="index" options={{title: "Design Your Sleep"}} />
       <Stack.Screen name="wiki" options={{title: "Wiki Page"}} />
       <Stack.Screen name="dream-design" options={{title: "Design Your Dream"}} />
       <Stack.Screen name="history" options={{title: "Sleep History"}} />
